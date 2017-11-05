@@ -1,0 +1,48 @@
+#:kivy 1.0.9
+#:import BattleShipGame battleshipgame.BattleShipGame
+#:import Grid grid.Grid
+#:import PlayerGrid grid.PlayerGrid
+#:import AIGrid grid.AIGrid
+#:import PlayerBoard board.PlayerBoard
+#:import AIBoard board.AIBoard
+
+<Grid>:
+    rows: 11
+    cols: 11
+    spacing: 5,5
+
+<PlayerBoard>:
+    orientation:
+        'vertical'
+    grid: playergrid
+    Label:
+        size_hint: 1, .1
+        text: 'Player'
+    PlayerGrid:
+        id: playergrid
+
+<AIBoard>:
+    orientation:
+        'vertical'
+    grid: aigrid
+    Label:
+        size_hint: 1, .1
+        text: 'AI'
+    AIGrid:
+        id: aigrid
+
+<BattleShipGame>:
+    orientation:
+        'vertical'
+    playerboard: playerboard
+    aiboard: aiboard
+    PlayerBoard:
+        id: playerboard
+    Button:
+        text: 'Start'
+        size_hint: 1, .1
+        on_press: root.startAI()
+    AIBoard:
+        id: aiboard
+
+
